@@ -6,14 +6,16 @@ const timeSlot = (model1, model2) => {
             // console.log(req.body.start)
             let flag = true;
             for(let i = 0; i < slot.length; i++){
-                if(req.body.start > slot[i].start && req.body.start < slot[i].end){
+                if(req.body.start >= slot[i].start && req.body.start <= slot[i].end){
                     flag = false;
                     break;
                 }
             }
             if(flag){
-                var newSlot = await model1.insertMany([req.body]);
+                let newSlot = await model1.insertMany([req.body]);
+                // let allSlot = await model2.insertMany([newSlot])
                 res.send(newSlot);
+                // res.send(allSlot);
             }else{
                 res.send('time slot is occupied!')
             }
