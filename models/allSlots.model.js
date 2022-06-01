@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-const TimeSlot = require('./timeSlot.model');
 
 const AllSlots = new mongoose.Schema({
-    slots : [{type : mongoose.Schema.Types.ObjectId, ref : TimeSlot}]
+    slots : [{type : mongoose.Schema.Types.ObjectId, ref : "timeSlot"}]
 })
 
 module.exports = mongoose.model('allSlots', AllSlots);
